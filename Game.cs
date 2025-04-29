@@ -25,19 +25,21 @@ namespace DungeonExplorer
             Console.WriteLine("You finally wake up. Your head is pounding, and the suffocating air, thick with dust, " +
                 "clings to your lungs. Where are you? How did you get here? \n" +
                 "\n(When prompted for a choice, you may type S, I or R into the console to see info about your " +
-                "Status, Inventory, or the Room you are in, and if you wish to leave the game, type exit!)\n");
+                "Status, Inventory, or the Room you are in, and if you wish to leave the game, type exit.\n");
 
 
             // Main game loop
             while (playing)
             {
                 Random rnd = new Random();
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
                 Room currentRoom = roomFactory.CreateRoomInstance("1");
                 string desc = currentRoom.GetDescription();
+                Console.WriteLine(desc);
                 string roomName = currentRoom.GetName();
 
                 Console.WriteLine($"You look around: {desc}");
+                Thread.Sleep(2000);
                 Console.WriteLine("What do you do next?");
 
                 bool invalidChoice = true;
@@ -57,7 +59,6 @@ namespace DungeonExplorer
                         Thread.Sleep(1000);
                         Console.WriteLine("You rolled...\n");
                         Thread.Sleep(1000);
-                        Random rnd = new Random();
                         int itemRoll = rnd.Next(1, 10);
                         Console.WriteLine(itemRoll + "!");
                         if (itemRoll < 8)

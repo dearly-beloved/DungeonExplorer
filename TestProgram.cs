@@ -22,14 +22,14 @@ namespace DungeonExplorer
         public void TestRoomFactory()
         {
             Debug.Assert(RoomFactory.CreateRoomInstance("invalidIdentifier") == null);
-            Room room = RoomFactory.CreateRoomInstance("Library");
+            Room room = RoomFactory.CreateRoomInstance("1");
             Debug.Assert(room != null);
             Debug.Assert(room.GetName() == "Library");
         }
 
         public void TestPlayer()
         {
-            Player testPlayer = new Player("test", 0);
+            Player testPlayer = new Player("test", 0, 1);
             Debug.Assert(testPlayer.GetName() == "test");
             Debug.Assert(testPlayer.GetHealth() == 0);
             Debug.Assert(testPlayer.GetInventoryContents() == "");
