@@ -23,8 +23,9 @@ public class GameMap
     /// </summary>
     /// <param name="room">The room to add.</param>
 
-    public static string GetAvailableRooms()
+    /*public static string GetAvailableRooms()
         {
 
         }
-    }
+    }*/
+}

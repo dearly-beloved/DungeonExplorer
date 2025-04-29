@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Threading;
 
 namespace DungeonExplorer
@@ -10,7 +11,8 @@ namespace DungeonExplorer
     internal class Game
     {
         private Player player;
-
+        private RoomFactory roomFactory;
+        //private StateHandler stateHandler;
         /// <summary>
         /// Begins the game and all the logic and text that follows.
         /// </summary>
@@ -18,7 +20,7 @@ namespace DungeonExplorer
         {
             Console.WriteLine("Welcome to the Dungeon Explorer!\n");
             Console.WriteLine("What is your name?");
-            this.player = new Player(Console.ReadLine(), 5, 1);
+            this.player = new Player(Console.ReadLine(), 5);
             Console.WriteLine($"\nHello {this.player.GetName()}!\n\nBeginning your adventure...\n");
             Thread.Sleep(1000);
             bool playing = true;
@@ -35,12 +37,12 @@ namespace DungeonExplorer
                 Thread.Sleep(2000);
                 Room currentRoom = roomFactory.CreateRoomInstance("1");
                 string desc = currentRoom.GetDescription();
-                Console.WriteLine(desc);
                 string roomName = currentRoom.GetName();
 
                 Console.WriteLine($"You look around: {desc}");
                 Thread.Sleep(2000);
-                Console.WriteLine("What do you do next?");
+                Console.WriteLine("\nWhat do you do next?");
+
 
                 bool invalidChoice = true;
                 while (invalidChoice)
@@ -52,29 +54,39 @@ namespace DungeonExplorer
                     if (userChoice == "A")
                     {
                         invalidChoice = false;
-                        string item = currentRoom.GetRandomItem();
-                        Console.WriteLine($"\nThe glistening turned out to be a {item}! You try to grab it off the shelf...");
-                        Thread.Sleep(1000);
-                        Console.WriteLine("Rolling dice... Roll a number that is smaller than 8 to pick up the item!");
-                        Thread.Sleep(1000);
-                        Console.WriteLine("You rolled...\n");
-                        Thread.Sleep(1000);
-                        int itemRoll = rnd.Next(1, 10);
-                        Console.WriteLine(itemRoll + "!");
-                        if (itemRoll < 8)
+                        int monsterRoll = rnd.Next(1, 6);
+                        Console.WriteLine($"You rolled {monsterRoll} for the monster encounter!");
+                        if (monsterRoll > 4)
                         {
-                            this.player.PickUpItem(item);
-                            Thread.Sleep(1000);
-                            Console.WriteLine($"You carefully put the {item} in your backpack.\n");
+                            string monster = currentRoom.SpawnMonster();
+                            Console.WriteLine($"You approach the glistening...\n A wretched {monster} jumps out at you!");
                         }
                         else
                         {
-                            Console.WriteLine("Oops! A huge spider crawls out from behind the item, startling you." +
-                                "You drop the item onto the floor, and it gets stuck under a bookshelf.\n");
-                        }
-                        if (!this.player.IsInvEmpty())
-                        {
-                            Console.WriteLine($"Your inventory contents are now: {this.player.GetInventoryContents()}\n");
+                            string item = "Bone Key";
+                            Console.WriteLine($"\nThe glistening turned out to be a {item}! You try to grab it off the shelf...");
+                            Thread.Sleep(1000);
+                            Console.WriteLine("Rolling dice... Roll a number that is smaller than 8 to pick up the item!");
+                            Thread.Sleep(1000);
+                            Console.WriteLine("You rolled...\n");
+                            Thread.Sleep(1000);
+                            int itemRoll = rnd.Next(1, 10);
+                            Console.WriteLine(itemRoll + "!");
+                            if (itemRoll < 8)
+                            {
+                                this.player.PickUpItem(item);
+                                Thread.Sleep(1000);
+                                Console.WriteLine($"You carefully put the {item} in your backpack.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Oops! A huge spider crawls out from behind the {item}, startling you. " +
+                                    "You drop it onto the floor, and it gets stuck under a bookshelf.\n");
+                            }
+                            if (!this.player.IsInvEmpty())
+                            {
+                                Console.WriteLine($"Your inventory contents are now: {this.player.GetInventoryContents()}\n");
+                            }
                         }
                     }
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
+using System;
 ///
 namespace DungeonExplorer
 {
@@ -10,6 +10,7 @@ namespace DungeonExplorer
     public class Player : Creature
     {
         private readonly List<string> inventory = new List<string>();
+        private static readonly Random rnd = new Random();
         public int level = 1;
 
         /// <summary>
@@ -17,8 +18,11 @@ namespace DungeonExplorer
         /// </summary>
         /// <param name="name">The name of the Player.</param>
         /// <param name="health">The amount of health points the Player has.</param>
-        public Player() : base("default", 5)
+        public Player(string name, int health) : base(name, health)
         {
+            this.name = name;
+            this.health = health;
+            this.inventory = new List<string>();
         }
 
         /// <summary>Returns the contents of the inventory list. If the inventory is empty,
@@ -71,16 +75,19 @@ namespace DungeonExplorer
             if (this.inventory.Contains(item))
             {
                 Console.WriteLine($"You use the {item}");
-                int potRoll = rnd.Next(1, 2);
+                int potRoll = rnd.Next(1, 3);
                 switch (potRoll)
                 {
                     case 1:
                         Console.WriteLine("Ew! BLEUGH! That potion was disgusting! You feel weird... queasy... and you lose 1 HP.");
                         health -= 1;
+                        break;
                     case 2:
                         Console.WriteLine("Amazing, and... magical? You gain 1 HP, and also a nice taste in your mouth! Yum!");
                         health += 1;
-                    }
+                        break;
+                }
+            }
         }
     }
 }

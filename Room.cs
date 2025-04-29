@@ -8,10 +8,13 @@ namespace DungeonExplorer
     /// </summary>
     public class Room
     {
+        private readonly string name = "";
         private readonly string description = "";
         private List<string> items = new List<string>();
         private List<string> links = new List<string>();
         private string item;
+        private readonly Random rnd = new Random();
+        private string monster;
 
         //private readonly string name = "";
 
@@ -67,9 +70,9 @@ namespace DungeonExplorer
         {
             this.items.Add(item);
         }
+
         public string GetRandomItem()
         {
-            Random rnd = new Random();
             int itemRoll = rnd.Next(1, 4);
             switch (itemRoll)
             {
@@ -87,6 +90,28 @@ namespace DungeonExplorer
                     break;
             }
             return item;
+        }
+
+        public string SpawnMonster()
+        {
+            int monsterRoll = rnd.Next(1, 4);
+            switch (monsterRoll)
+            {
+                case 1:
+                    monster = "Dusklich";
+                    break;
+                case 2:
+                    monster = "Rotling";
+                    break;
+                case 3:
+                    monster = "Cryptseer Mage";
+                    break;
+                default:
+                    monster = "Unknown Monster"; // Fallback case
+                    break;
+            }
+            return monster;
+
         }
     }
 }

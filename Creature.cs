@@ -8,8 +8,8 @@ namespace DungeonExplorer
 {
     public abstract class Creature
     {
-        private string name;
-        private int health;
+        public string name;
+        public int health;
         /// <summary>
         /// Initializes a new instance of the <see cref="Creature"/> class.
         /// </summary>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Runtime.CompilerServices;
 
 /// <summary>
@@ -26,8 +26,8 @@ namespace DungeonExplorer
         }
     }
 
-    public class Weapon(string name, string description, int effect, int damage) : Item
+    //public class Weapon(string name, string description, int effect, int damage) : Item
     {
         public int damage = damage;
     }
-}
+}*/

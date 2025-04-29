@@ -21,10 +21,14 @@ namespace DungeonExplorer
 
             try
             {
-                // Create a new game instances
+                // Create a new game instance
                 Game currentGame = new Game();
+
+                // Create a RoomFactory instance
+                RoomFactory roomFactory = new RoomFactory();
+
                 // Start the game
-                currentGame.Start(roomFactory: RoomFactory);
+                currentGame.Start(roomFactory);
             }
             finally
             {

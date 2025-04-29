@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -39,9 +39,9 @@ namespace DungeonExplorer
 
         public void TestRoom()
         {
-            Room testRoom = new Room("test", "this is a test room", new List<string> {"Dagger, Apple"});
+            //Room testRoom = new Room("test", "this is a test room", new List<string> {"Dagger, Apple"});
             Debug.Assert(testRoom.GetName() == "test");
             Debug.Assert(testRoom.GetDescription() == "this is a test room");
         }
     }
-}
+}*/

@@ -33,14 +33,13 @@ namespace DungeonExplorer
                 {
                     return new Room(roomData[i, 1], roomData[i, 2], roomData[i, 3]);
                 }
-                return null;
             }
+            return null;
         }
 
         public string GetConnectedRooms(int CurrentRoomId)
-            {
+        {
             return roomData[CurrentRoomId, 3];
-            }
         }
     }
 }
