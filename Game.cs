@@ -10,16 +10,15 @@ namespace DungeonExplorer
     internal class Game
     {
         private Player player;
-        private readonly Room currentRoom = RoomFactory.CreateRoomInstance("Library");
 
         /// <summary>
         /// Begins the game and all the logic and text that follows.
         /// </summary>
-        public void Start()
+        public void Start(RoomFactory roomFactory)
         {
             Console.WriteLine("Welcome to the Dungeon Explorer!\n");
             Console.WriteLine("What is your name?");
-            this.player = new Player(Console.ReadLine(), 5);
+            this.player = new Player(Console.ReadLine(), 5, 1);
             Console.WriteLine($"\nHello {this.player.GetName()}!\n\nBeginning your adventure...\n");
             Thread.Sleep(1000);
             bool playing = true;
@@ -32,7 +31,9 @@ namespace DungeonExplorer
             // Main game loop
             while (playing)
             {
+                Random rnd = new Random();
                 Thread.Sleep(3000);
+                Room currentRoom = roomFactory.CreateRoomInstance("1");
                 string desc = currentRoom.GetDescription();
                 string roomName = currentRoom.GetName();
 
@@ -49,7 +50,7 @@ namespace DungeonExplorer
                     if (userChoice == "A")
                     {
                         invalidChoice = false;
-                        string item = "Mysterious Potion";
+                        string item = currentRoom.GetRandomItem();
                         Console.WriteLine($"\nThe glistening turned out to be a {item}! You try to grab it off the shelf...");
                         Thread.Sleep(1000);
                         Console.WriteLine("Rolling dice... Roll a number that is smaller than 8 to pick up the item!");
@@ -82,10 +83,11 @@ namespace DungeonExplorer
                         if (this.player.TryOpenDoor())
                         {
                             Console.WriteLine("You put the key in the lock, and it turns! The door creaks as you push it open...");
-                            Console.WriteLine("...");
                             Thread.Sleep(1000);
-                            Console.WriteLine("The end... for now!");
-                            return;
+                            Console.WriteLine("You look around...");
+                            string links = roomFactory.GetConnectedRooms(1);
+                            Room newRoom = roomFactory.CreateRoomInstance("2");
+                            return; 
                         }
                         else
                         {
@@ -95,7 +97,7 @@ namespace DungeonExplorer
 
                     else if (userChoice == "C")
                     {
-                        string item = "Bone Key";
+                        string item = currentRoom.GetRandomItem();
                         Console.WriteLine($"\nThe glistening turned out to be a {item}! You try to grab it off the shelf...");
                         Thread.Sleep(1000);
                         Console.WriteLine("Rolling dice... Roll a number that is smaller than 8 to pick up the item!");
@@ -103,7 +105,6 @@ namespace DungeonExplorer
                         Console.WriteLine("You rolled...\n");
                         invalidChoice = false;
                         Thread.Sleep(1000);
-                        Random rnd = new Random();
                         int itemRoll = rnd.Next(1, 10);
                         Console.WriteLine(itemRoll + "!");
                         if (itemRoll < 8)

@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+///
 namespace DungeonExplorer
 {
     /// <summary>
     /// A class representing the Player in the text-based adventure, using a user-set name.
     /// </summary>
-    public class Player
+    public class Player : Creature
     {
-        private readonly string name;
-        private readonly int health;
         private readonly List<string> inventory = new List<string>();
 
         /// <summary>
@@ -17,25 +15,11 @@ namespace DungeonExplorer
         /// </summary>
         /// <param name="name">The name of the Player.</param>
         /// <param name="health">The amount of health points the Player has.</param>
-        public Player(string name, int health)
+        public Player(string name, int health, int level)
         {
-            this.name = name;
-            this.health = health;
+
         }
 
-        /// <summary>Returns the Player's name.</summary>
-        /// <returns>The name string.</returns>
-        public string GetName()
-        {
-            return this.name;
-        }
-
-        /// <summary>Returns the Player's health value.</summary>
-        /// <returns>The health integer.</returns>
-        public int GetHealth()
-        {
-            return this.health;
-        }
 
         /// <summary>Returns the contents of the inventory list. If the inventory is empty,
         /// an empty string is returned. </summary>
@@ -69,6 +53,17 @@ namespace DungeonExplorer
         public bool IsInvEmpty()
         {
             return !this.inventory.Any();
+        }
+
+        public int GetLevel()
+        {
+            return this.level;
+        }
+
+        ///
+        public void SetLevel(int level)
+        {
+            this.level = level;
         }
     }
 }

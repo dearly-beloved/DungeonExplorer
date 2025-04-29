@@ -42,7 +42,6 @@ namespace DungeonExplorer
             Room testRoom = new Room("test", "this is a test room", new List<string> {"Dagger, Apple"});
             Debug.Assert(testRoom.GetName() == "test");
             Debug.Assert(testRoom.GetDescription() == "this is a test room");
-            Debug.Assert(testRoom.)
         }
     }
 }

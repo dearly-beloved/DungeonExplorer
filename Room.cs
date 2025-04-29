@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DungeonExplorer
 {
@@ -9,7 +10,10 @@ namespace DungeonExplorer
     {
         private readonly string description = "";
         private List<string> items = new List<string>();
-        private readonly string name = "";
+        private List<string> links = new List<string>();
+        private string item;
+
+        //private readonly string name = "";
 
         /// <summary>
         /// Constructs a Room object.
@@ -17,7 +21,7 @@ namespace DungeonExplorer
         /// <param name="name">The name of the Room.</param>
         /// <param name="description">The description of the Room.</param>
         /// <param name="items">The items that are inside of the Room.</param>
-        public Room(string name, string description, List<string> items)
+        public Room(string name, string description, string links)
         {
             if (name != null)
             {
@@ -62,6 +66,27 @@ namespace DungeonExplorer
         private void AddItem(string item)
         {
             this.items.Add(item);
+        }
+        public string GetRandomItem()
+        {
+            Random rnd = new Random();
+            int itemRoll = rnd.Next(1, 4);
+            switch (itemRoll)
+            {
+                case 1:
+                    item = "Dagger";
+                    break;
+                case 2:
+                    item = "Spell Book";
+                    break;
+                case 3:
+                    item = "Mysterious Potion";
+                    break;
+                case 4:
+                    item = "No item";
+                    break;
+            }
+            return item;
         }
     }
 }
