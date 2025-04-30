@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Runtime.CompilerServices;
 
 /// <summary>
@@ -10,24 +10,70 @@ namespace DungeonExplorer
     {
         private string name;
         private string description;
-        private int hpEffect;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Item"/> class.
         /// </summary>
         /// <param name="name">The name of the item.</param>
-        /// <param name="description">The description of the item.</param>
-        /// <param name="value">The value of the item.</param>
-        public Item(string name, string description, int effect)
+        public Item(string name)
         {
             this.name = name;
-            this.description = description;
-            this.hpEffect = effect;
         }
+
+        public string GetDescription()
+        {
+            return this.description;
+        }
+
     }
 
-    //public class Weapon(string name, string description, int effect, int damage) : Item
+    public class Potion : Item
     {
-        public int damage = damage;
+        public int hpEffect;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Potion"/> class.
+        /// </summary>
+        /// <param name="name">The name of the potion.</param>
+        /// <param name="effect">The HP effect of the potion.</param>
+        public Potion(string name, int effect) : base(name)
+        {
+            this.hpEffect = effect;
+        }
+
+        public int GetHpEffect()
+        {
+            return this.hpEffect;
+        }
+
+       
+
+        public class Weapon : Item
+        {
+            public int attackDamage;
+            public string attackType;
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Weapon"/> class.
+            /// </summary>
+            /// <param name="name">The name of the weapon.</param>
+            /// <param name="damage">The attack damage of the weapon.</param>
+            public Weapon(string name, int damage) : base(name)
+            {
+                this.attackDamage = damage;
+            }
+
+            public string GetAttackType()
+            {
+                return this.attackType;
+            }
+
+            public int GetDamage()
+            {
+                return this.attackDamage;
+            }
+        }
     }
-}*/
+}
+
+

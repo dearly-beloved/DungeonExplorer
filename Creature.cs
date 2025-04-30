@@ -15,7 +15,7 @@ namespace DungeonExplorer
         /// </summary>
         /// <param name="name">The name of the creature.</param>
         /// <param name="health">The health of the creature.</param>
-        public Creature(string name, int health)
+        public Creature(string name)
         {
             this.name = name;
             this.health = health;
@@ -33,6 +33,11 @@ namespace DungeonExplorer
         public int GetHealth()
         {
             return this.health;
+        }
+
+        public void SetHealth(int healthChange)
+        {
+            this.health += healthChange;
         }
     }
 }

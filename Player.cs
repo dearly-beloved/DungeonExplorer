@@ -18,7 +18,7 @@ namespace DungeonExplorer
         /// </summary>
         /// <param name="name">The name of the Player.</param>
         /// <param name="health">The amount of health points the Player has.</param>
-        public Player(string name, int health) : base(name, health)
+        public Player(string name, int health) : base(name)
         {
             this.name = name;
             this.health = health;
@@ -38,6 +38,23 @@ namespace DungeonExplorer
         public void PickUpItem(string item)
         {
             this.inventory.Add(item);
+        }
+
+        public bool CheckIfInInv(string item)
+        {
+            return inventory.Contains(item, StringComparer.OrdinalIgnoreCase);
+        }
+
+        public void RemoveItem(string item)
+        {
+            if (inventory.Contains(item, StringComparer.OrdinalIgnoreCase))
+            {
+                inventory.RemoveAt(inventory.FindIndex(n => n.Equals(item, StringComparison.OrdinalIgnoreCase)));
+            }
+            else
+            {
+                Console.WriteLine("This item doesn't exist!");
+                    }
         }
 
         /// <summary>
@@ -65,12 +82,13 @@ namespace DungeonExplorer
         }
 
         ///
-        public void SetLevel(int level)
+        public void SetLevel(int xp)
         {
+            //if (xp >= 5)
             this.level = level;
         }
 
-        public void UseItem(string item, int health)
+        public void UseItem(string item)
         {
             if (this.inventory.Contains(item))
             {
@@ -80,14 +98,23 @@ namespace DungeonExplorer
                 {
                     case 1:
                         Console.WriteLine("Ew! BLEUGH! That potion was disgusting! You feel weird... queasy... and you lose 1 HP.");
-                        health -= 1;
+                        this.health -= 1;
                         break;
                     case 2:
                         Console.WriteLine("Amazing, and... magical? You gain 1 HP, and also a nice taste in your mouth! Yum!");
-                        health += 1;
+                        this.health += 1;
                         break;
                 }
             }
+            else
+            {
+                Console.WriteLine("No item of that name is in your inventory!");
+            }
+
         }
+
+    
+
     }
+
 }
