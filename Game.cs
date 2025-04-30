@@ -46,7 +46,7 @@ namespace DungeonExplorer
                 {
                     Thread.Sleep(2000);
                     getOptions();
-                    currentRoom.GetItems();
+                    Console.WriteLine($"Items in the room: {string.Join(", ", currentRoom.GetItems())}");
                     string userChoice = Console.ReadLine().ToUpper();
 
                     // Handling the user's choices and playing the corresponding scenario
@@ -150,6 +150,7 @@ namespace DungeonExplorer
                             Thread.Sleep(1000);
                             Console.WriteLine("You look around...");
                             string links = roomFactory.GetConnectedRooms(0);
+                            currentRoom.ChooseNextRoom();
                             Console.WriteLine(links);
                             Console.WriteLine("You see the following rooms: " + links);
                             previousRoom = currentRoom;
@@ -256,7 +257,7 @@ namespace DungeonExplorer
             Console.WriteLine("What do you do?\n");
             Console.WriteLine("A: Search the room");
             Console.WriteLine("B: Try to open the door");
-            Console.WriteLine("C: Go to a different room");
+            Console.WriteLine("C: Go to previous room");
             Console.WriteLine("I: Manage your inventory");
             Console.WriteLine("R: Look around the room");
             Console.WriteLine("S: Check your status");

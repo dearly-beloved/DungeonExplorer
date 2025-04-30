@@ -121,11 +121,15 @@ namespace DungeonExplorer
                     case 7:
                         item = "Ruined Book";
                         break;
-                    }
+                }
                 this.items.Add(item);
-                Console.WriteLine(string.Join(", ", this.items));
             }
             return item;
+        }
+
+        public string GetItems()
+        {
+            return string.Join(", ", this.items);
         }
 
         public void SetMonsters()
@@ -181,15 +185,24 @@ namespace DungeonExplorer
             return item;
         }
 
-        public void GetItems()
+        public string ChooseNextRoom()
         {
-            Console.WriteLine(string.Join(", ", this.items));
-        }
+            if (links == null || links.Count == 0)
+            {
+                Console.WriteLine("There are no connecting rooms from here.");
+                return null;
+            }
 
-        public void GetNextRoom()
-        {
-            Console.WriteLine(string.Join(", ", this.links));
-        }
+            Console.WriteLine("You see the following connecting rooms:");
+            for (int i = 0; i < links.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}: {links[i]}");
+            }
 
+            Console.WriteLine("Enter the number of the room you want to go to:");
+            string input = Console.ReadLine();
+
+            }
+        }
     }
 }
