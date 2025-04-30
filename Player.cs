@@ -12,6 +12,7 @@ namespace DungeonExplorer
         private readonly List<string> inventory = new List<string>();
         private static readonly Random rnd = new Random();
         public int level = 1;
+        public int xp = 0;
 
         /// <summary>
         /// Constructs a Player object.
@@ -82,10 +83,16 @@ namespace DungeonExplorer
         }
 
         ///
-        public void SetLevel(int xp)
+        public void SetXp(int xp)
         {
-            //if (xp >= 5)
-            this.level = level;
+            int levelXp = (level * 5) + 1; // Amount of xp required to get to next level, scaling with the player's level
+            this.xp += xp;
+            if (this.xp > levelXp)
+                {
+                this.level += 1;
+                this.xp = 0;
+                Console.WriteLine($"You leveled up to level {this.level}!");
+            }
         }
 
         public void UseItem(string item)

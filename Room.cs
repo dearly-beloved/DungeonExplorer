@@ -136,18 +136,21 @@ namespace DungeonExplorer
             {
                 case 1:
                     monster = "Dusklich";
+                    monsters.Add(monster);
                     break;
                 case 2:
                     monster = "Rotling";
+                    monsters.Add(monster);
                     break;
                 case 3:
                     monster = "Cryptseer Mage";
+                    monsters.Add(monster);
                     break;
                 default:
                     monster = "Unknown Monster";
+                    monsters.Add(monster);
                     break;
             }
-            monsters.Add(monster);
         }
 
         public int GetNoMonsters()
@@ -157,10 +160,18 @@ namespace DungeonExplorer
 
         public string GetRandomMonster()
         {
-            int monsterRoll = rnd.Next(0, monsters.Count);
-            string monster = monsters[monsterRoll];
-            //monsters.RemoveAt(monsterRoll);
-            return monster;
+            if (monsters.Count > 0)
+            {
+                int monsterRoll = rnd.Next(0, 3);
+                string monster = monsters[monsterRoll];
+                monsters.RemoveAt(monsterRoll);
+                return monster;
+            }
+            else
+            {
+                Console.WriteLine("No monsters in this room!");
+                return "No monsters";
+            }
         }
 
         public string GetRandomItem()
@@ -169,5 +180,16 @@ namespace DungeonExplorer
             string item = items[itemRoll];
             return item;
         }
+
+        public void GetItems()
+        {
+            Console.WriteLine(string.Join(", ", this.items));
+        }
+
+        public void GetNextRoom()
+        {
+            Console.WriteLine(string.Join(", ", this.links));
+        }
+
     }
 }

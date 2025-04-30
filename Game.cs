@@ -39,12 +39,14 @@ namespace DungeonExplorer
                 Thread.Sleep(2000);
                 Room currentRoom = roomFactory.CreateRoomInstance("1");
                 bool invalidChoice = true;
+                Room previousRoom = currentRoom;
                 Console.WriteLine($"You look around:\n{currentRoom.GetDescription()}");
 
                 while (turnNumber < 50)
                 {
                     Thread.Sleep(2000);
                     getOptions();
+                    currentRoom.GetItems();
                     string userChoice = Console.ReadLine().ToUpper();
 
                     // Handling the user's choices and playing the corresponding scenario
@@ -106,6 +108,7 @@ namespace DungeonExplorer
                                         this.player.PickUpItem(monsterDrop);
                                         Thread.Sleep(1000);
                                         Console.WriteLine($"You carefully put the {monsterDrop} in your backpack.\n");
+                                        currentRoom.RemoveItem(monsterDrop);
                                     }
                                     else if (itemChoice == "N")
                                     {
@@ -149,6 +152,7 @@ namespace DungeonExplorer
                             string links = roomFactory.GetConnectedRooms(0);
                             Console.WriteLine(links);
                             Console.WriteLine("You see the following rooms: " + links);
+                            previousRoom = currentRoom;
                             Room newRoom = roomFactory.CreateRoomInstance("3"); //make a method for deciding next connecting room ya know 
                             currentRoom = newRoom;
                             Console.WriteLine($"You are now in the {currentRoom.GetName()}.");
@@ -161,13 +165,18 @@ namespace DungeonExplorer
 
                     else if (userChoice == "C")
                     {
-                        if (currentRoom.GetNoItems() > 0)
+                        if (previousRoom == currentRoom)
                         {
-                            ItemEncounter(currentRoom.GetRandomItem());
+                            Console.WriteLine("You haven't explored another room yet!");
                         }
                         else
                         {
-                            Console.WriteLine("There are no items left in this room...");
+                            invalidChoice = false;
+                            Console.WriteLine($"You decide to go back to the {previousRoom.GetName()}.");
+                            previousRoom = currentRoom;
+                            Room newRoom = roomFactory.CreateRoomInstance("1");
+                            currentRoom = newRoom;
+                            Console.WriteLine($"You are now in the {currentRoom.GetName()}.");
                         }
                     }
 
@@ -206,7 +215,7 @@ namespace DungeonExplorer
                                 {
                                     player.RemoveItem(itemChoice);
                                     Console.WriteLine($"You toss the {itemChoice} away.");
-                                    Console.WriteLine("Your inventory contains: " + this.player.GetInventoryContents());
+                                    Console.WriteLine("Your inventory now contains: " + this.player.GetInventoryContents());
                                 }
                                 else
                                 {
@@ -247,6 +256,7 @@ namespace DungeonExplorer
             Console.WriteLine("What do you do?\n");
             Console.WriteLine("A: Search the room");
             Console.WriteLine("B: Try to open the door");
+            Console.WriteLine("C: Go to a different room");
             Console.WriteLine("I: Manage your inventory");
             Console.WriteLine("R: Look around the room");
             Console.WriteLine("S: Check your status");
@@ -262,6 +272,10 @@ namespace DungeonExplorer
             Console.WriteLine("You rolled...\n");
             Thread.Sleep(1000);
             int itemRoll = rnd.Next(1, 10);
+            if (item == "Bone Key")
+            {
+                itemRoll = 1;
+            }
             Console.WriteLine(itemRoll + "!");
             if (itemRoll < 8)
             {
