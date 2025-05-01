@@ -3,11 +3,6 @@ using System.Runtime.CompilerServices;
 
 namespace DungeonExplorer
 {
-    interface IConsumable
-    {
-        int GetHpEffect();
-    }
-
     public class Item
     {
         private string name;
@@ -44,11 +39,6 @@ namespace DungeonExplorer
         {
             return this.hpEffect;
         }
-
-    interface IUsable
-    {
-        int GetDamage();
-    }
 
         public class Weapon : Item, IUsable
         {

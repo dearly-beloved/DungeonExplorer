@@ -61,17 +61,6 @@ namespace DungeonExplorer
             this.East = East;
             this.South = South;
             this.West = West;
-
-            int[,] travelData =
-            {   //North East South West
-                {-1, 3, -1, -1}, //Library 1
-                {-1, 7, -1, 3}, //Cellar 2
-                {5, 2, 4, 1}, //Hallway 3
-                {3, -1, 6, -1}, //Kitchen 4 
-                {-1, -1, 3, -1}, //Bedroom 5
-                {4, -1, -1, -1}, //Garden 6 
-                {-1, -1, -1, 2} //Prison Cell 7
-            };
         }
 
         /// <summary>Returns the Room's name.</summary>

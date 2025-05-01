@@ -290,7 +290,7 @@ namespace DungeonExplorer
                     Console.WriteLine("Please enter a valid option!");
                 }
             }
-
+            a
             Console.WriteLine("Your strength fades, the cold takes hold, and darkness swallows everything...");
             Thread.Sleep(3000);
             Console.WriteLine("You died! :(");

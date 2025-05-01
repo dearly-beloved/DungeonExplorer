@@ -6,12 +6,6 @@
 
 namespace DungeonExplorer
 {
-    interface IDamageable
-    {
-        int GetHealth();
-        void SetHealth(int healthChange);
-    }
-
     public abstract class Creature : IDamageable
     {
         public string name;

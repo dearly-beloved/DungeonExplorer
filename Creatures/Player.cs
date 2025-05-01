@@ -6,12 +6,6 @@ using System.Diagnostics.Eventing.Reader;
 
 namespace DungeonExplorer
 {
-
-    interface IPlayable
-    {
-        void GetInventoryContents();
-    }
-
     /// <summary>
     /// A class representing the Player in the text-based adventure, using a user-set name.
     /// </summary>

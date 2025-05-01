@@ -7,13 +7,9 @@ using System.Runtime.Remoting.Messaging;
 /// </summary>
 namespace DungeonExplorer
 {
-    interface IFightable
-    {
-        void getAttackType();
-    }
 
     /// <summary> A class representing a creature in the text-based adventure. </summary>
-    public class Monster : Creature, IFightable
+    public class Monster : Creature, IFightable, IDamageable
     {
         protected int damage;
         private readonly Random rnd = new Random();
