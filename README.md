@@ -1,5 +1,5 @@
 ## Beginnings of a text-based dungeon crawler game!
-### CMP1903 Assignment 1
+### CMP1903 Assignment 2
 
 ```
           |\      _,,,---,,_
