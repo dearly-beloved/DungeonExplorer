@@ -1,7 +1,0 @@
-1;Library;"A dusty library full of sorcery tomes and alchemy books. The air feels tense and you feel strange. You see something glistening at the top of a shelf... and is that a door at the back of the room?;Hallway      
-2;Cellar;A dark and damp cellar. You can hear the sound of dripping water echoing in the distance.;Hallway Prison Cell
-3;Hallway;A long and narrow hallway.;Library Cellar Kitchen Bedroom
-4;Kitchen;A large kitchen with a long table in the center.;Hallway Garden    
-5;Bedroom;A small bedroom with a bed and a wardrobe.;Hallway      
-6;Garden;A wilted garden full of dead trees and flowers.;Kitchen      
-7;Prison Cell;A dark and damp prison cell.;Cellar      
