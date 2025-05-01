@@ -6,7 +6,13 @@
 
 namespace DungeonExplorer
 {
-    public abstract class Creature
+    interface IDamageable
+    {
+        int GetHealth();
+        void SetHealth(int healthChange);
+    }
+
+    public abstract class Creature : IDamageable
     {
         public string name;
         public int health;
@@ -18,7 +24,6 @@ namespace DungeonExplorer
         public Creature(string name)
         {
             this.name = name;
-            this.health = health;
         }
 
         /// <summary>Returns the Creature's name.</summary>
@@ -35,6 +40,7 @@ namespace DungeonExplorer
             return this.health;
         }
 
+        //// <summary>Sets the Creature's health value.</summary>
         public void SetHealth(int healthChange)
         {
             this.health += healthChange;
