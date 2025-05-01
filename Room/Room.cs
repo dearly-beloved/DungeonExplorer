@@ -22,15 +22,12 @@ namespace DungeonExplorer
         private int South;
         private int West;
 
-
-        //private readonly string name = "";
-
         /// <summary>
         /// Constructs a Room object.
         /// </summary>
         /// <param name="name">The name of the Room.</param>
-        /// <param name="description">The description of the Room.</param>
-        /// <param name="items">The items that are inside of the Room.</param>
+        /// <param name="description">The description of the Room.</param>>
+        /// <param name="North">etc. The ID of the rooms that are connected to the current room.</param>
         public Room(string name, string description, int North, int East, int South, int West)
         {
             if (name != null)
@@ -56,7 +53,7 @@ namespace DungeonExplorer
             
             this.SetMonsters();
             this.SetItems();
-
+            
             this.North = North;
             this.East = East;
             this.South = South;
@@ -124,28 +121,27 @@ namespace DungeonExplorer
                 switch (itemRoll)
                 {
                     case 1:
-                        item = "Dagger";
+                        this.items.Add("Dagger");
                         break;
                     case 2:
-                        item = "Spell Book";
+                        this.items.Add("Spell Book");
                         break;
                     case 3:
-                        item = "Mysterious Potion";
+                        this.items.Add("Mysterious Potion");
                         break;
                     case 4:
-                        item = "Great Sword";
+                        this.items.Add("Great Sword");
                         break;
                     case 5:
-                        item = "Frog Leg";
+                        this.items.Add("Frog Leg");
                         break;
                     case 6:
-                        item = "Monster Flesh";
+                        this.items.Add("Monster Flesh");
                         break;
                     case 7:
-                        item = "Ruined Book";
+                        this.items.Add("Ruined Book");
                         break;
                 }
-                this.items.Add(item);
             }
             return item;
         }
@@ -167,20 +163,16 @@ namespace DungeonExplorer
                 switch (monsterRoll)
                 {
                     case 1:
-                        monster = "Dusklich";
-                        monsters.Add(monster);
+                        monsters.Add("Dusklich");
                         break;
                     case 2:
-                        monster = "Rotling";
-                        monsters.Add(monster);
+                        monsters.Add("Rotling");
                         break;
                     case 3:
-                        monster = "Cryptseer Mage";
-                        monsters.Add(monster);
+                        monsters.Add("Cryptseer Mage");
                         break;
                 }
             }
-        }
 
         /// <summary>Returns the number of monsters in the room.</summary>
         public int GetNoMonsters()
@@ -200,6 +192,7 @@ namespace DungeonExplorer
             string monster = monsters[monsterRoll];
             monsters.RemoveAt(monsterRoll);
             return monster;
+
         }
 
         /// <summary>Returns a random item from the room.</summary>

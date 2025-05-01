@@ -4,6 +4,12 @@ namespace DungeonExplorer
 {
     interface IFightable
     {
-        void getAttackType();
+        string attackType;
+        int xpGranted;
+        int damage;
+        int GetDamage();
+        string getAttackType();
+        int GetXpGranted()
+
     }
 }

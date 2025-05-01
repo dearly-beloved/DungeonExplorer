@@ -16,7 +16,6 @@ namespace DungeonExplorer
         protected string attackType;
         protected int xpGranted;
 
-
         /// <summary> Creates a new instance of the <see cref="Monster"/> class.
         /// Sets specific damage, health, attackType, xpGranted attributes
         /// based on the type of monster. </summary>
