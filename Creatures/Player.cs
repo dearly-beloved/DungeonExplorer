@@ -15,7 +15,7 @@ namespace DungeonExplorer
     /// <summary>
     /// A class representing the Player in the text-based adventure, using a user-set name.
     /// </summary>
-    public class Player : Creature
+    public class Player : Creature, IPlayable
     {
         private readonly List<string> inventory = new List<string>();
         private static readonly Random rnd = new Random();
@@ -127,7 +127,7 @@ namespace DungeonExplorer
             if (this.inventory.Contains(item, StringComparer.OrdinalIgnoreCase))
             {
                 Console.WriteLine($"You consume the {item}...");
-                if (item == "mysterious potion")
+                if (item == "Mysterious potion")
                 {
                     int potRoll = rnd.Next(1, 3);
                     switch (potRoll)
@@ -142,12 +142,12 @@ namespace DungeonExplorer
                             break;
                     }
                 }
-                else if (item == "spell book")
+                else if (item == "Spell book")
                 {
                     Console.WriteLine("You open the spell book and read a few pages. You feel more powerful!");
                     this.SetXp(5);
                 }
-                else if (item == "frog leg")
+                else if (item == "Frog leg")
                 {
                     int frogRoll = rnd.Next(1, 5);
                     if (frogRoll > 3)

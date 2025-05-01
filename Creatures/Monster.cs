@@ -13,7 +13,7 @@ namespace DungeonExplorer
     }
 
     /// <summary> A class representing a creature in the text-based adventure. </summary>
-    public class Monster : Creature
+    public class Monster : Creature, IFightable
     {
         protected int damage;
         private readonly Random rnd = new Random();

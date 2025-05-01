@@ -58,47 +58,47 @@ namespace DungeonExplorer
                             Monster currentMonster = new Monster(currentRoom.GetRandomMonster());
                             Console.WriteLine($"You approach the glistening, trying to make out what it is... when a wretched {currentMonster.GetName()} jumps out at you!\n");
                             Console.WriteLine($"You quickly check your pockets: {this.player.GetInventoryContents()}..." +
-                                $" What do you do?\nA: Fight the {currentMonster.GetName()} with a weapon... or your fists!\nB: Flee to safety");
+                                $" What do you do?\nA: Fight the {currentMonster.GetName()} with a weapon... or your fists!\nB: Flee to safety\n");
                             Console.Write("> ");
                             string monsterChoice = Console.ReadLine().ToUpper();
                             invalidChoice = false;
                             if (monsterChoice == "A")
                             {
-                                Console.WriteLine("You prepare for battle.");
+                                Console.WriteLine("You prepare for battle.\n");
                                 while (currentMonster.GetHealth() > 0)
                                 {
                                     Console.WriteLine($"{currentMonster.GetName()} used {currentMonster.GetAttackType()}!");
-                                    Console.WriteLine("Press D to dodge!");
+                                    Console.WriteLine("Press D to dodge!\n");
                                     Console.Write("> ");
                                     string dodgeInput = Console.ReadLine().ToUpper();
                                     if (dodgeInput == "D" && player.IsInvEmpty())
                                     {
-                                        Console.WriteLine($"You crouch, avoiding the attack. As the {currentMonster.GetName()} regains its strength, you deal a powerful blow, inflicting 2 damage!");
-                                        Console.WriteLine($"The {currentMonster.GetName()} now has {currentMonster.GetHealth()} health left.");
+                                        Console.WriteLine($"You crouch, avoiding the attack. As the {currentMonster.GetName()} regains its strength, you deal a powerful blow, inflicting 2 damage!\n");
+                                        Console.WriteLine($"The {currentMonster.GetName()} now has {currentMonster.GetHealth()} health left.\n");
                                         currentMonster.SetHealth(-2);
                                     }
                                     else if (dodgeInput == "D" && !player.IsInvEmpty())
                                     {
-                                        Console.WriteLine($"You crouch, avoiding the attack. As the {currentMonster.GetName()} regains its strength, you slash at it with your sword, inflicting 6 damage!");
+                                        Console.WriteLine($"You crouch, avoiding the attack. As the {currentMonster.GetName()} regains its strength, you slash at it with your sword, inflicting 6 damage!\n");
                                         currentMonster.SetHealth(-6);
                                     }
                                     else
                                     {
-                                        Console.WriteLine($"You freeze in panic, and the {currentMonster.GetAttackType()} deals {currentMonster.GetDamage()} damage to you!");
+                                        Console.WriteLine($"You freeze in panic, and the {currentMonster.GetAttackType()} deals {currentMonster.GetDamage()} damage to you!\n");
                                         player.SetHealth(-(currentMonster.GetDamage()));
                                         Thread.Sleep(2000);
-                                        Console.WriteLine($"You now have {player.GetHealth()}/20 health.");
+                                        Console.WriteLine($"You now have {player.GetHealth()}/20 health.\n");
                                     }
                                 }
-                                Console.WriteLine($"The wretched {currentMonster.GetName()} lets out a hollow screech, falling to the ground, before crumbling into dust...");
-                                Console.WriteLine($"You gained {currentMonster.GetXpGranted()} XP!");
+                                Console.WriteLine($"The wretched {currentMonster.GetName()} lets out a hollow screech, falling to the ground, before crumbling into dust...\n");
+                                Console.WriteLine($"You gained {currentMonster.GetXpGranted()} XP!\n");
                                 player.SetXp(currentMonster.GetXpGranted());
                                 Thread.Sleep(2000);
-                                Console.WriteLine("But right where it disappeared, you see something...");
+                                Console.WriteLine("But right where it disappeared, you see something...\n");
                                 Thread.Sleep(2000);
                                 string monsterDrop = currentRoom.GetRandomItem();
                                 Item currentItem = new Item(monsterDrop);
-                                Console.WriteLine($"A {monsterDrop}! Pick it up? (Y or N)");
+                                Console.WriteLine($"A {monsterDrop}! Pick it up? (Y or N)\n");
                                 Console.Write("> ");
                                 string itemChoice = Console.ReadLine().ToUpper();
                                 if (itemChoice == "Y")
@@ -277,8 +277,7 @@ namespace DungeonExplorer
                 else if (userChoice == "S")
                 {
                     invalidChoice = false;
-                    int hp = this.player.GetHealth();
-                    Console.WriteLine($"You currently have {hp} health and you are in the {currentRoom.GetName()}!");
+                    Console.WriteLine($"You currently have {player.GetHealth()} health, are level {player.GetLevel()} and you are in the {currentRoom.GetName()}!");
                 }
 
                 else if (userChoice == "EXIT")
