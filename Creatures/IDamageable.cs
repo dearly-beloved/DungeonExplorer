@@ -8,5 +8,4 @@ namespace DungeonExplorer
         int GetHealth();
         void SetHealth(int healthChange);
     }
-
 }

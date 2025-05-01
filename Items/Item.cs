@@ -16,57 +16,6 @@ namespace DungeonExplorer
         {
             this.name = name;
         }
-
-    }
-
-    public class Potion : Item, IConsumable
-    {
-        public int hpEffect;
-        private string tag;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Potion"/> class.
-        /// </summary>
-        /// <param name="name">The name of the potion.</param>
-        /// <param name="effect">The HP effect of the potion.</param>
-        public Potion(string name, int effect) : base(name)
-        {
-            this.hpEffect = effect;
-        }
-
-        /// <summary> Gets the potion's HP effect. </summary>
-        public int GetHpEffect()
-        {
-            return this.hpEffect;
-        }
-
-        public class Weapon : Item, IUsable
-        {
-            public int attackDamage;
-            public string attackType;
-
-            /// <summary>
-            /// Initializes a new instance of the <see cref="Weapon"/> class.
-            /// </summary>
-            /// <param name="name">The name of the weapon.</param>
-            /// <param name="damage">The attack damage of the weapon.</param>
-            public Weapon(string name, int damage) : base(name)
-            {
-                this.attackDamage = damage;
-            }
-
-            /// <summary> Gets the weapon's attack type. </summary>
-            public string GetAttackType()
-            {
-                return this.attackType;
-            }
-
-            /// <summary> Gets the weapon's attack damage. </summary>
-            public int GetDamage()
-            {
-                return this.attackDamage;
-            }
-        }
     }
 }
 
