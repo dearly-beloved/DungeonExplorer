@@ -15,9 +15,10 @@ namespace DungeonExplorer
         /// </summary>
         /// <param name="name">The name of the weapon.</param>
         /// <param name="damage">The attack damage of the weapon.</param>
-        public Weapon(string name, int damage) : base(name)
+        public Weapon(string name, int damage, string tag) : base(name, tag)
         {
             this.attackDamage = damage;
+            this.tag = "Weapon";
         }
 
         /// <summary> Gets the weapon's attack type. </summary>

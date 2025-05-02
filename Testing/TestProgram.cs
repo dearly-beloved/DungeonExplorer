@@ -1,5 +1,4 @@
-﻿/*
-using System;
+﻿/* using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -34,14 +33,18 @@ namespace DungeonExplorer
 
         public void TestRoom()
         {
-            Room testRoom = new Room("test", "this is a test room", -1, -1, -1, -1);
+            Room testRoom = new Room("", "this is a test room", -1, -1, -1, -1);
             Debug.Assert(testRoom.GetName() == "test");
             Debug.Assert(testRoom.GetDescription() == "this is a test room");
-            Debug.Assert(testRoom.GetNoItems() == 0);
-            Debug.Assert(testRoom.GetNoMonsters() == 0);
+            Debug.Assert(testRoom.GetNoItems() >= 0 && testRoom.GetNoItems() < 3);
+            Debug.Assert(testRoom.GetNoMonsters() > 0 && testRoom.GetNoMonsters() < 3);
             testRoom.AddItem("Test Item");
             testRoom.RemoveItem("Test Item");
-            Debug.Assert(testRoom.GetRandomMonster() == "Test");
+            while (testRoom.GetNoMonsters() > 0)
+            {
+                string monster = testRoom.GetRandomMonster();
+                Debug.Assert(monster == "Rotling" || monster == "Dusklich" || monster == "Cryptseer Mage");
+            }
             Debug.Assert(testRoom.GetDirection("1") != 0);
             testRoom.SetBoss();
             testRoom.GetBossTrap(true);
@@ -60,9 +63,9 @@ namespace DungeonExplorer
 
         public void TestItem()
         {
-            Item testItem = new Item("Test");
+            Item testItem = new Item("Test", "Test Tag");
             Debug.Assert(testItem.GetName() == "Test");
-            Debug.Assert(testItem.GetTag() == "Test");
+            Debug.Assert(testItem.GetTag() == "Test Tag");
             Console.WriteLine("Item test passed.");
         }
 
@@ -82,4 +85,3 @@ namespace DungeonExplorer
 }
 
 */
-

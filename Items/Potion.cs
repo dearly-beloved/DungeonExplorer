@@ -16,9 +16,10 @@ namespace DungeonExplorer
         /// </summary>
         /// <param name="name">The name of the potion.</param>
         /// <param name="effect">The HP effect of the potion.</param>
-        public Potion(string name, int effect) : base(name)
+        public Potion(string name, int effect, string tag) : base(name, tag)
         {
             this.hpEffect = effect;
+            this.tag = "Potion";
         }
 
         /// <summary> Gets the potion's HP effect. </summary>

@@ -5,14 +5,14 @@ namespace DungeonExplorer
 {
     public class Item
     {
-        private string name;
-        private string tag;
+        public string name;
+        public string tag;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Item"/> class.
         /// </summary>
         /// <param name="name">The name of the item.</param>
-        public Item(string name)
+        public Item(string name, string tag)
         {
             this.name = name;
             this.tag = tag;

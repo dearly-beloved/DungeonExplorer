@@ -97,7 +97,7 @@ namespace DungeonExplorer
                                 Console.WriteLine("But right where it disappeared, you see something...\n");
                                 Thread.Sleep(2000);
                                 string monsterDrop = currentRoom.GetRandomItem();
-                                Item currentItem = new Item(monsterDrop);
+                                Item currentItem = new Item(monsterDrop, "Item");
                                 Console.WriteLine($"A {monsterDrop}! Pick it up? (Y or N)\n");
                                 Console.Write("> ");
                                 string itemChoice = Console.ReadLine().ToUpper();

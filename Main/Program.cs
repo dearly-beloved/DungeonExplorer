@@ -15,6 +15,7 @@ namespace DungeonExplorer
         /// <param name="args">String array that stores the command-line arguments.</param>
         static void Main(string[] args)
         {
+            // Testing class - remove comments for use
             //TestProgram testingInstance = new TestProgram();
             //testingInstance.TestPlayer();
             //testingInstance.TestRoom();
