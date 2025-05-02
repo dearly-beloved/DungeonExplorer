@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DungeonExplorer
 {
     interface IPlayable
     {
-        private readonly List<string> inventory = new List<string>();
-        void GetInventoryContents();
+        string GetInventoryContents();
     }
 }

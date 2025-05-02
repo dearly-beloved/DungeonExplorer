@@ -6,7 +6,6 @@ namespace DungeonExplorer
     /// A class representing a potion in the text-based adventure.
     /// </summary>
     /// <remarks> The Potion class inherits from the Item class and implements the IConsumable interface. </remarks>
-{
     public class Potion : Item, IConsumable
     {
         public int hpEffect;

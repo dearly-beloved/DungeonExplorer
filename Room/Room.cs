@@ -173,6 +173,7 @@ namespace DungeonExplorer
                         break;
                 }
             }
+        }
 
         /// <summary>Returns the number of monsters in the room.</summary>
         public int GetNoMonsters()

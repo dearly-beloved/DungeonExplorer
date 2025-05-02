@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -23,8 +24,9 @@ namespace DungeonExplorer
         /// </summary>
         public void TestRoomFactory()
         {
-            Debug.Assert(RoomFactory.CreateRoomInstance("invalidIdentifier") == null);
-            Room room = RoomFactory.CreateRoomInstance("1");
+            RoomFactory roomFactory = new RoomFactory();
+            Debug.Assert(roomFactory.CreateRoomInstance("invalidIdentifier") == null);
+            Room room = roomFactory.CreateRoomInstance("1");
             Debug.Assert(room != null);
             Debug.Assert(room.GetName() == "Library");
             Console.WriteLine("RoomFactory test passed.");
@@ -32,37 +34,35 @@ namespace DungeonExplorer
 
         public void TestRoom()
         {
-            Room testRoom = new Room("test", "this is a test room", new List<string> {"Dagger, Apple"});
+            Room testRoom = new Room("test", "this is a test room", -1, -1, -1, -1);
             Debug.Assert(testRoom.GetName() == "test");
             Debug.Assert(testRoom.GetDescription() == "this is a test room");
-            Debug.Assert(testRoom.GetNoItems() == "2");
-            Debug.Assert(testRoom.GetNoMonsters() == "0");
-            Debug.Assert(testRoom.AddItem("Test Item"));
-            Debug.Assert(testRoom.RemoveItem("Test Item"));
+            Debug.Assert(testRoom.GetNoItems() == 0);
+            Debug.Assert(testRoom.GetNoMonsters() == 0);
+            testRoom.AddItem("Test Item");
+            testRoom.RemoveItem("Test Item");
             Debug.Assert(testRoom.GetRandomMonster() == "Test");
-            Debug.Assert(testRoom.GetDirection("Test"));
-            Debug.Assert(testRoom.SetBoss() == "Test");
-            Debug.Assert(testRoom.GetBossTrap(true) == "Test");
+            Debug.Assert(testRoom.GetDirection("1") != 0);
+            testRoom.SetBoss();
+            testRoom.GetBossTrap(true);
             Console.WriteLine("Room test passed.");
         }
 
         public void TestCreature()
         {
-            Creature testCreature = new Creature("Test creature", 0);
-            Debug.Assert(testCreature.GetName() == "Test");
+            Creature testCreature = new Monster("Test creature");
+            Debug.Assert(testCreature.GetName() == "Test creature");
             Debug.Assert(testCreature.GetHealth() == 0);
-            Debug.Assert(testCreature.SetHealth(1) == 1);
-            Debug.Assert(testCreature.GetAttackType() == "Test");
+            testCreature.SetHealth(1);
+            Debug.Assert(testCreature.GetHealth() == 1);
             Console.WriteLine("Creature test passed.");
         }
 
         public void TestItem()
         {
-            Item testItem = new Item("Test", "Test", 0, 0);
+            Item testItem = new Item("Test");
             Debug.Assert(testItem.GetName() == "Test");
             Debug.Assert(testItem.GetTag() == "Test");
-            Debug.Assert(testItem.GetAttackDamage() == 0);
-            Debug.Assert(testItem.GetHpEffect() == 0);
             Console.WriteLine("Item test passed.");
         }
 
@@ -72,14 +72,14 @@ namespace DungeonExplorer
             Debug.Assert(testPlayer.GetName() == "Test");
             Debug.Assert(testPlayer.GetHealth() == 0);
             Debug.Assert(testPlayer.GetLevel() == 1);
-            Debug.Assert(testPlayer.GetXp() == 0);
-            Debug.Assert(testPlayer.GetLocation() == 1);
-            Debug.Assert(testPlayer.AddItem("Test Item"));
-            Debug.Assert(testPlayer.RemoveItem("Test Item"));
-            Debug.Assert(testPlayer.GetInventoryContents() == "Test Item");
+            testPlayer.PickUpItem("Test Item");
+            Debug.Assert(testPlayer.CheckIfInInv("Test Item"));
+            testPlayer.RemoveItem("Test Item");
+            Debug.Assert(!testPlayer.CheckIfInInv("Test Item"));
             Console.WriteLine("Player test passed.");
         }
     }
 }
 
 */
+

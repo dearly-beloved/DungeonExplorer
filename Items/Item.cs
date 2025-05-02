@@ -15,6 +15,17 @@ namespace DungeonExplorer
         public Item(string name)
         {
             this.name = name;
+            this.tag = tag;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public string GetTag()
+        {
+            return tag;
         }
     }
 }

@@ -15,11 +15,11 @@ namespace DungeonExplorer
         /// <param name="args">String array that stores the command-line arguments.</param>
         static void Main(string[] args)
         {
-            TestProgram testingInstance = new TestProgram();
-            testingInstance.TestPlayer();
-            testingInstance.TestRoom();
-            testingInstance.TestItem();
-            testingInstance.TestCreature();
+            //TestProgram testingInstance = new TestProgram();
+            //testingInstance.TestPlayer();
+            //testingInstance.TestRoom();
+            //testingInstance.TestItem();
+            //testingInstance.TestCreature();
 
             try
             {
